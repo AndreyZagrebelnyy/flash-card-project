@@ -4,7 +4,7 @@ const {EOL} = require('os')
 class Model {
 	async getQuestionsAndAnswers(filePath) {
 		const str = await fs.readFile(`./topics/${filePath}`, "utf-8");
-		const arr = str.split({EOL});
+		const arr = str.split('\n');
 		const arrFromData = [];
 		for (let i = 0; i < arr.length - 2; i += 3) {
 		  const objectFromData = {};
@@ -14,7 +14,7 @@ class Model {
 		  if (question && value) {
 			 objectFromData.question = question;
 			 objectFromData.answer = value;
-			 objectFromData.choices = choices.split(", ");
+			 objectFromData.choices = choices.split("; ");
 			 arrFromData.push(objectFromData);
 		  }
 		}
