@@ -1,4 +1,7 @@
 const inquirer = require('inquirer');
+// const chalk = require('chalk');
+
+
 
 class View {
   async startQuiz() {
@@ -14,7 +17,7 @@ class View {
 
   async pullQuestions({ question, answer, choices }, counter) {
     let userAnswer;
-    if (choices.length > 1) {
+    if (choices.length > 0) {
       userAnswer = await inquirer.prompt([
         {
           type: 'list',
@@ -33,10 +36,13 @@ class View {
       ]);
     }
     if (userAnswer.userAnswer.trim().toLowerCase() === answer.toLowerCase()) {
-      console.log('Красавчики(с) Макс');
+      // console.log(chalk.green('Красавчики! (с) Макс\n'));
+		console.log("\x1b[32m", 'Красавчики! (с) Макс\n');
       counter += 100;
     } else {
-      console.log('Накажу(с) Игорь');
+
+      // console.log(chalk.red('Накажу! (с) Игорь\n'));
+		console.log("\x1b[31m", 'Накажу! (с) Игорь\n');
     }
     return counter;
   }

@@ -4,7 +4,7 @@ class Controller {
     this.view = view;
   }
 
-  async getStartedQuiz() {
+  async runQuiz() {
     let counter = 0;
     const userCategory = await this.view.startQuiz();
 
@@ -15,7 +15,7 @@ class Controller {
       arrOfQuestions = await this.model.getQuestionsAndAnswers("kiberpank.txt");
     }
     if (userCategory.category === "Они правда это сказали?") {
-      arrOfQuestions = await this.model.getQuestionsAndAnswers("IsntRelly.txt");
+      arrOfQuestions = await this.model.getQuestionsAndAnswers("IsntReally.txt");
     }
     if (userCategory.category === "Эльбрус движ") {
       arrOfQuestions = await this.model.getQuestionsAndAnswers("funElbrus.txt");
